@@ -8,5 +8,6 @@ import java.util.List;
 public interface DepartmentService {
     List<DepartmentDto> findAll();
     Department save(DepartmentDto departmentDto);
+    DepartmentDto findById(Long id);
 
 }

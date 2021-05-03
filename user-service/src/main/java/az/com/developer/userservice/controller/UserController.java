@@ -43,4 +43,10 @@ public class UserController {
         return userService.getUserWithDepartment(userId);
     }
 
+//    @GetMapping("/{id}")
+//    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
+//        UserDto byId = userService.findById(id);
+//        return ResponseEntity.ok(byId);
+//    }
+
 }

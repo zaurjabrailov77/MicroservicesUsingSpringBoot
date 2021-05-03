@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserService {
     List<UserDto> findAll();
     User save(UserDto userDto);
+    UserDto findById(Long id);
 
     ResponseTemplateVO getUserWithDepartment(Long userId);
 

@@ -29,4 +29,11 @@ public class DepartmentServiceImpl implements DepartmentService{
         log.info("Inside save Department method of DepartmentServiceImpl");
         return departmentRepository.save(departmentMapper.toDepartment(departmentDto));
     }
+
+    @Override
+    public DepartmentDto findById(Long id) {
+        Department byId = departmentRepository.findById(id).orElseThrow(() ->
+                new IllegalStateException("Id " + id +" dose not exit"));
+        return departmentMapper.toDepartmentDto(byId);
+    }
 }

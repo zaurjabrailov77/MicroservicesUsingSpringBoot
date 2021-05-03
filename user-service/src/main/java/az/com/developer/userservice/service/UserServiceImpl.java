@@ -36,13 +36,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto findById(Long id) {
+        User byId = userRepository.findById(id).orElseThrow(() ->
+                new IllegalStateException("Id " + id +" dose not exit"));
+        return userMapper.toUserDto(byId);
+    }
+
+    @Override
     public ResponseTemplateVO getUserWithDepartment(Long userId) {
         log.info("Inside getUserWithDepartment of UserServiceImpl");
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user = userRepository.findByUserId(userId);
 
         Department department = restTemplate
-                .getForObject("http://localhost:9001/departments/" + user.getDepartmentId(),
+                .getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(),
                         Department.class);
         vo.setUser(user);
         vo.setDepartment(department);
